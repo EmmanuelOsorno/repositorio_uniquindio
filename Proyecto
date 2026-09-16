@@ -14,5 +14,3 @@ public class matrizEjercicio4 {
         }
 
         System.out.println("La cantidad de nombres que empiezan por la letra a son: "+cantidadNombresA);
-    }
-}
