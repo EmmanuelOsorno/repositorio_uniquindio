@@ -13,9 +13,19 @@ public class Compra {
 
     //relacion Compra-MetodoPago
     private MetodoPago metodoPago;
+    //relacion Cliente-Compra
+    private Cliente cliente;
+    //relacion Compra-DetalleCompra
+    private DetalleCompra detalleCompra;
 
     //creacion de lista
     private List<DetalleCompra> listaDetalleCompra;
+
+
+    public Compra(List<DetalleCompra> listaDetalleCompra) {
+        this.listaDetalleCompra = listaDetalleCompra;
+
+    }
 
 
 
@@ -25,14 +35,16 @@ public class Compra {
         this.fechaRealizacion = fechaRealizacion;
         this.valorTotal = valorTotal;
         this.metodoPago= metodoPago;
+        this.detalleCompra=detalleCompra;
 
 
-        //Iinicializar la lista
+        //Inicializar la lista
 
         listaDetalleCompra = new ArrayList<>();
 
 
     }
+
 
 
     //get y set
@@ -70,20 +82,37 @@ public class Compra {
         this.listaDetalleCompra = listaDetalleCompra;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
 
+    public DetalleCompra getDetalleCompra() {
+        return detalleCompra;
+    }
+
+    public void setDetalleCompra(DetalleCompra detalleCompra) {
+        this.detalleCompra = detalleCompra;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     //toString
 
-
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return "Compra{" +
                 "codigoCompra='" + codigoCompra + '\'' +
                 ", fechaRealizacion=" + fechaRealizacion +
                 ", valorTotal=" + valorTotal +
                 ", metodoPago=" + metodoPago +
+                ", cliente=" + cliente +
+                ", detalleCompra=" + detalleCompra +
                 ", listaDetalleCompra=" + listaDetalleCompra +
                 '}';
     }
+
+
     //Método agregar detalleCompra
 
     public boolean agregarDetalleCompra(DetalleCompra detalle){

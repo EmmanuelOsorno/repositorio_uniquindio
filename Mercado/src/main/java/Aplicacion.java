@@ -186,31 +186,42 @@ public class Aplicacion {
                 case 9:
                     System.out.println("==========Agregar Compra==========");
 
-                    System.out.print("Ingrese el codigo de la compra: ");
-                    String codigoCompra=sc.nextLine();
+                    System.out.print("Ingrese el documento de identidad del cliente que realiza la compra: ");
+                    int documentoCliente=sc.nextInt();
 
-                    System.out.println("Ingrese la fecha en la que fue realizada la compra: ");
-                    System.out.print("Ingrese el año: ");
-                    int año= sc.nextInt();
-                    System.out.print("Ingrese el mes: ");
-                    int mes= sc.nextInt();
-                    System.out.print("Ingrese el dia: ");
-                    int dia= sc.nextInt();
-                    sc.nextLine();
-                    LocalDate fechaRealizacion=LocalDate.of(año,mes,dia);
+                    boolean clienteEncontrado=supermercado.verificarClientes(documentoCliente);
+                    if(clienteEncontrado) {
 
-                    System.out.print("Ingrese el valor total de la compra: ");
-                    double valorTotal= sc.nextDouble();
-                    sc.nextLine(); // Limpiar el buffer del scanner
+                        System.out.print("Ingrese el codigo de la compra: ");
+                        String codigoCompra=sc.nextLine();
 
+                        sc.nextLine();
 
+                        System.out.println("Fecha en la que fue realizada la compra");
+                        System.out.print("Ingrese el año: ");
+                        int año = sc.nextInt();
+                        System.out.print("Ingrese el mes: ");
+                        int mes = sc.nextInt();
+                        System.out.print("Ingrese el dia: ");
+                        int dia = sc.nextInt();
+                        LocalDate fechaRealizacion = LocalDate.of(año, mes, dia);
 
-                    Compra agregarCompra=new Compra(codigoCompra,fechaRealizacion,valorTotal,);
+                        System.out.print("Ingrese el valor total de la compra: ");
+                        double valorTotal = sc.nextDouble();
 
-                    if(supermercado.agregarCompra(agregarCompra)){
+                        Compra compra = new Compra(codigoCompra, fechaRealizacion, valorTotal);
+
+                        System.out.print("Ingrese el producto: ");
+                        String productoCompra=sc.nextLine();
+                        System.out.print("Ingrese la cantidad del producto: ");
+                        int cantidadProducto=sc.nextInt();
+
+                        DetalleCompra detalleCompra=new DetalleCompra(Producto, cantidadProducto);
+
+                        supermercado.agregarCompra(compra);
                         System.out.println("Compra agregada correctamente");
                     }else{
-                        System.out.println("La compra no pudo ser agregada");
+                        System.out.println("No se encontro un  cliente con ese documento de identidad");
                     }
                     break;
 
