@@ -7,6 +7,10 @@ public class Producto {
     private int cantidadDisponible;
 
 
+    //relacion Producto-Categoria
+    private Categoria categoria;
+
+
     //constructor
     public Producto(String codigoProducto, String nombre, double precioUnitario, int cantidadDisponible) {
         this.codigoProducto = codigoProducto;
@@ -48,11 +52,9 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" +
-                "codigoProducto='" + codigoProducto + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", precioUnitario=" + precioUnitario +
-                ", cantidadDisponible=" + cantidadDisponible +
-                '}';
+        return "Producto " + nombre +
+                "= codigoProducto: " + codigoProducto +
+                ", precioUnitario: " + precioUnitario +
+                ", cantidadDisponible: " + cantidadDisponible;
     }
 }
