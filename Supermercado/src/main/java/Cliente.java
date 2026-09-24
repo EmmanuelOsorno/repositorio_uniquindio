@@ -1,10 +1,16 @@
 public class Cliente {
 
-    //atributos
+    //Atributos
     private String nombreCompleto;
     private int documentoIdentidad;
     private int telefono;
     private String correo;
+
+
+    //Creación listas
+
+    private List<Compra> listaCompras;
+
 
 
     //constructor
@@ -13,6 +19,11 @@ public class Cliente {
         this.documentoIdentidad = documentoIdentidad;
         this.telefono = telefono;
         this.correo = correo;
+
+        //Inicializar las listas
+
+        listaCompras= new ArrayList<>();
+
     }
 
 
@@ -42,13 +53,39 @@ public class Cliente {
         this.correo = correo;
     }
 
-
-    //toString
-    @Override
-    public String toString() {
-        return "Cliente " + nombreCompleto +
-                "= documentoIdentidad: " + documentoIdentidad +
-                ", telefono: " + telefono +
-                ", correo: " + correo;
+    public List<Compra> getListaCompras() {
+        return listaCompras;
+    }public void setListaCompras(List<Compra> listaCompras) {
+        this.listaCompras = listaCompras;
     }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Cliente{" +
+                "nombreCompleto='" + nombreCompleto + '\'' +
+                ", documentoIdentidad=" + documentoIdentidad +
+                ", telefono=" + telefono +
+                ", correo='" + correo + '\'' +
+                ", listaCompras=" + listaCompras +
+                '}';
+    }
+
+    //================Clientes==================
+    //Método para agregar profesor
+    // Método agregar compra
+    // Método agregar compra
+
+    public boolean agregarCompra(Compra compra){
+        boolean agregada = false;
+
+        listaCompras.add(compra);
+        agregada = true;
+
+        return agregada;
+    }
+
+
+
+
+
 }
