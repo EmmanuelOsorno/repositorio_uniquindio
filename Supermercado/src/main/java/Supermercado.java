@@ -25,7 +25,7 @@ public class Supermercado {
         //inicializar listas
         ListaClientes=new ArrayList<>();
         ListaProductos=new ArrayList<>();
-        ListaProductos=new ArrayList<>();
+        ListaCompras=new ArrayList<>();
     }
 
 

@@ -8,6 +8,7 @@ public class Aplicacion {
         Scanner sc = new Scanner(System.in);
 
         Supermercado supermercado = new Supermercado("MarketPlus", "Calle 30 con carrera 15", 32165487);
+        supermercado-
 
         int opcion;
         do {
