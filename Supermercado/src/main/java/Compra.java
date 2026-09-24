@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Compra {
 
-    //atributos
+    //Atributos
     private String codigoCompra;
     private LocalDate fechaRealizacion;
     private double valorTotal;

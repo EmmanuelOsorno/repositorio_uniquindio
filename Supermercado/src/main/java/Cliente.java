@@ -69,10 +69,9 @@ public class Cliente {
                 ", listaCompras=" + listaCompras +
                 '}';
     }
-}
 
     //================Clientes==================
-    //Método para agregar compra
+
     // Método verificar  compra
 
     // Método para verificar compras
@@ -90,7 +89,20 @@ public class Cliente {
 
     }
 
+    //Metodo para agregar compra
 
+    public boolean agregarCompra(Compra compra){
+        boolean agregada = false;
+
+        boolean existe = verificarCompra(compra.getCodigoCompra());
+
+        if(existe == false){
+            listaCompras.add(compra);
+            agregada = true;
+        }
+
+        return agregada;
+    }
 
 
 }
