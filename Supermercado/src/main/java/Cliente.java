@@ -69,21 +69,26 @@ public class Cliente {
                 ", listaCompras=" + listaCompras +
                 '}';
     }
+}
 
     //================Clientes==================
-    //Método para agregar profesor
-    // Método agregar compra
-    // Método agregar compra
+    //Método para agregar compra
+    // Método verificar  compra
 
-    public boolean agregarCompra(Compra compra){
-        boolean agregada = false;
+    // Método para verificar compras
+    public boolean verificarCompra(int codigoCompra){
+        boolean existe = false;
 
-        listaCompras.add(compra);
-        agregada = true;
+        for(Compra compra: listaCompras){
+            if(compra.getCodigoCompra() == codigoCompra){
+                existe = true;
+                break;
+            }
+        }
 
-        return agregada;
+        return existe;
+
     }
-
 
 
 

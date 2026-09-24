@@ -11,6 +11,8 @@ public class Producto {
     private Categoria categoria;
 
 
+
+
     //constructor
     public Producto(String codigoProducto, String nombre, double precioUnitario, int cantidadDisponible) {
         this.codigoProducto = codigoProducto;
@@ -56,5 +58,16 @@ public class Producto {
                 "= codigoProducto: " + codigoProducto +
                 ", precioUnitario: " + precioUnitario +
                 ", cantidadDisponible: " + cantidadDisponible;
+    }
+
+    //Método  para verificar disponible
+    public boolean verificarDisponibilidad(int cantidad){
+        boolean disponible = false;
+
+        if(cantidadDisponible >= cantidad){
+            disponible = true;
+        }
+
+        return disponible;
     }
 }
