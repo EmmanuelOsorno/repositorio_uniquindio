@@ -9,6 +9,10 @@ public class Cliente {
     private String correo;
 
 
+    //relacion Cliente-Compra
+    private Compra compra;
+
+
     //Creación listas
 
     private List<Compra> listaCompras;
@@ -21,6 +25,8 @@ public class Cliente {
         this.documentoIdentidad = documentoIdentidad;
         this.telefono = telefono;
         this.correo = correo;
+        this.compra=compra;
+
 
         //Inicializar las listas
 
@@ -55,6 +61,19 @@ public class Cliente {
         this.correo = correo;
     }
 
+    public Compra getCompra() {return compra;}
+    public void setCompra(Compra compra) {this.compra = compra;}
+
+
+    //metodo para mostrar compra
+    public void mostrarCompra(){
+        System.out.println("Cliente: "+nombreCompleto);
+        System.out.print("Documento de identidad: "+documentoIdentidad);
+        System.out.print("Compras=\nCodigo de compra: "+compra.getCodigoCompra()+"\nFecha de compra: "+compra.getFechaRealizacion()+"\nDetalles de la compra: "+compra.getDetalleCompra());
+    }
+
+
+
     public List<Compra> getListaCompras() {
         return listaCompras;
     }public void setListaCompras(List<Compra> listaCompras) {
@@ -68,7 +87,7 @@ public class Cliente {
                 "= documentoIdentidad: " + documentoIdentidad +
                 ", telefono: " + telefono +
                 ", correo: " + correo +
-                ", listaCompras=" + listaCompras;
+                ", listaCompras=" + "\nDetalles de la compra: "+compra.getDetalleCompra();
     }
 
     //================Clientes==================

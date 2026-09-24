@@ -1,29 +1,37 @@
 public class DetalleCompra {
 
     //atributos
-    private String codigoProducto;
+    private Producto producto;
     private int cantidadProducto;
 
 
     //contructor
-    public DetalleCompra(String codigoProducto, int cantidadProducto) {
-        this.codigoProducto = codigoProducto;
+    public DetalleCompra(Producto producto, int cantidadProducto) {
+        this.producto = producto;
         this.cantidadProducto = cantidadProducto;
     }
 
 
     //get y set
-    public String getCodigoProducto() {
-        return codigoProducto;
+    public Producto getProducto() {
+        return producto;
     }
-    public void setCodigoProducto(String codigoProducto) {
-        this.codigoProducto = codigoProducto;
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
+
     public int getCantidadProducto() {
         return cantidadProducto;
     }
+
     public void setCantidadProducto(int cantidadProducto) {
         this.cantidadProducto = cantidadProducto;
+    }
+
+
+    public double calcularValor(){
+        return producto.getPrecioUnitario()*cantidadProducto;
     }
 
 
@@ -31,8 +39,9 @@ public class DetalleCompra {
 
     @Override
     public String toString() {
-        return "DetalleCompra=" +
-                "codigoProducto: " + codigoProducto +
-                ", cantidadProducto: " + cantidadProducto;
+        return "DetalleCompra= " +
+                "producto: " + producto +
+                ", cantidadProducto: " + cantidadProducto +
+                ", valor de la compra: "+calcularValor();
     }
 }

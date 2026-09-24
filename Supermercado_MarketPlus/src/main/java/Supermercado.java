@@ -14,6 +14,7 @@ public class Supermercado {
     private List<Compra> ListaCompras;
 
 
+
     //constructor
     public Supermercado(String nombreomercial, String direccion, int telefono) {
         this.nombreomercial = nombreomercial;
@@ -238,21 +239,6 @@ public class Supermercado {
         return eliminado;
     }
 
-
-    //metodo para mostrar compra por cliente
-    public boolean mostrarCompraCliente(int documentoIdentidad){
-        boolean encontrado=false;
-        for(Compra compra:ListaCompras){
-            if(compra.getCliente().getDocumentoIdentidad()==documentoIdentidad){
-                compra.informacionCompra();
-                encontrado=true;
-                break;
-            }else{
-                System.out.print("No se encontro un cliente con ese documento de identidad");
-            }
-        }
-        return encontrado;
-    }
 
 
 }

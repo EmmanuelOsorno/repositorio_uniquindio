@@ -193,7 +193,7 @@ public class Aplicacion {
                     boolean clienteEncontrado=supermercado.verificarClientes(documentoCliente);
                     if(clienteEncontrado) {
 
-                        System.out.println("Ingrese el codigo de la compra: ");
+                        System.out.print("Ingrese el codigo de la compra: ");
                         String codigoCompra=sc.nextLine();
 
                         sc.nextLine();
@@ -211,6 +211,14 @@ public class Aplicacion {
                         double valorTotal = sc.nextDouble();
 
                         Compra compra = new Compra(codigoCompra, fechaRealizacion, valorTotal);
+
+                        System.out.print("Ingrese el producto: ");
+                        String productoCompra=sc.nextLine();
+                        System.out.print("Ingrese la cantidad del producto: ");
+                        int cantidadProducto=sc.nextInt();
+
+                        DetalleCompra detalleCompra=new DetalleCompra(Producto, cantidadProducto);
+
 
                         supermercado.agregarCompra(compra);
                         System.out.println("Compra agregada correctamente");
@@ -262,13 +270,10 @@ public class Aplicacion {
 
                 case 12:
                     System.out.println("==========Mostrar Compras==========");
-                    System.out.print("Ingrese el documento de identidad del cliente que realizó la compra: ");
-                    int documentoClienteMostrar=sc.nextInt();
 
-                    boolean clienteEncontradoMostrarCompra=supermercado.mostrarCompraCliente(documentoClienteMostrar);
-                    if(clienteEncontradoMostrarCompra){
+                    for(Cliente ListaClientes: supermercado.getListaClientes()){
+                        System.out.println(ListaClientes);
                     }
-
                     break;
 
                 case 0:

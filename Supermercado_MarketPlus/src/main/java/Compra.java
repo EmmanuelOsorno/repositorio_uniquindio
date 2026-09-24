@@ -14,19 +14,25 @@ public class Compra {
     private MetodoPago metodoPago;
     //relacion Cliente-Compra
     private Cliente cliente;
+    //relacion Compra-DetalleCompra
+    private DetalleCompra detalleCompra;
+
 
     //creacion de lista
     private List<DetalleCompra> listaDetalleCompra;
 
 
+    public Compra(List<DetalleCompra> listaDetalleCompra) {
+        this.listaDetalleCompra = listaDetalleCompra;
+    }
 
     //constructor
     public Compra(String codigoCompra, LocalDate fechaRealizacion, double valorTotal) {
         this.codigoCompra = codigoCompra;
         this.fechaRealizacion = fechaRealizacion;
         this.valorTotal = valorTotal;
-        this.cliente=cliente;
-
+        this.cliente = cliente;
+        this.detalleCompra=detalleCompra;
 
 
         //Iinicializar la lista
@@ -41,27 +47,35 @@ public class Compra {
     public String getCodigoCompra() {
         return codigoCompra;
     }
+
     public void setCodigoCompra(String codigoCompra) {
         this.codigoCompra = codigoCompra;
     }
+
     public LocalDate getFechaRealizacion() {
         return fechaRealizacion;
     }
+
     public void setFechaRealizacion(LocalDate fechaRealizacion) {
         this.fechaRealizacion = fechaRealizacion;
     }
+
     public double getValorTotal() {
         return valorTotal;
     }
+
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
-    public Cliente getCliente(){return cliente;}
-    public void setCliente(Cliente cliente){this.cliente=cliente;}
+
+    public Cliente getCliente() {return cliente;}
+
+    public void setCliente(Cliente cliente) {this.cliente = cliente;}
 
     public MetodoPago getMetodoPago() {
         return metodoPago;
     }
+
     public void setMetodoPago(MetodoPago metodoPago) {
         this.metodoPago = metodoPago;
     }
@@ -70,21 +84,24 @@ public class Compra {
         return listaDetalleCompra;
     }
 
+    public DetalleCompra getDetalleCompra() {return detalleCompra;}
+
+    public void setDetalleCompra(DetalleCompra detalleCompra) {this.detalleCompra = detalleCompra;}
+
     public void setListaDetalleCompra(List<DetalleCompra> listaDetalleCompra) {
         this.listaDetalleCompra = listaDetalleCompra;
 
     }
 
-    public void informacionCompra() {
-        System.out.print("codigoCompra: " + codigoCompra +
-                ", fechaRealizacion: " + fechaRealizacion +
-                ", valorTotal: " + valorTotal +
-                ", metodoPago: " + metodoPago);
+
+    //metodo para mostrar detalleCompra
+    public void mostrarDetalleCompra(){
+        System.out.println("Compra: "+codigoCompra);
+        System.out.print("Detalles de la compra: "+detalleCompra.getProducto()+", "+detalleCompra.getCantidadProducto()+", "+detalleCompra.calcularValor());
     }
 
+
     //toString
-
-
     @java.lang.Override
     public java.lang.String toString() {
         return "Compra= " +
@@ -92,38 +109,9 @@ public class Compra {
                 ", fechaRealizacion: " + fechaRealizacion +
                 ", valorTotal: " + valorTotal +
                 ", metodoPago: " + metodoPago +
-                ", listaDetalleCompra: " + listaDetalleCompra;
-    }
-    //Método agregar detalleCompra
-
-
-    public boolean agregarDetalleCompra(DetalleCompra detalle){
-        boolean agregado = false;
-
-        listaDetalleCompra.add(detalle);
-        agregado = true;
-
-        return agregado;
+                "\nDetalles de la compra: "+detalleCompra;
     }
 
-    //Calcular valor total
 
-    public double calcularValorTotal(List<Producto> listaProductos){
-        double total = 0;
 
-        for(DetalleCompra detalle : listaDetalleCompra){
-
-            for(Producto producto : listaProductos){
-
-                if(producto.getCodigoProducto().equals(detalle.getCodigoProducto())){
-
-                    total = total + (producto.getPrecioUnitario() * detalle.getCantidadProducto());
-
-                    break;
-                }
-            }
-        }
-
-        return total;
-    }
 }
