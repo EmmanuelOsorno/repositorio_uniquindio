@@ -75,11 +75,11 @@ public class Cliente {
     // Método verificar  compra
 
     // Método para verificar compras
-    public boolean verificarCompra(int codigoCompra){
+    public boolean verificarCompra(String codigoCompra){
         boolean existe = false;
 
         for(Compra compra: listaCompras){
-            if(compra.getCodigoCompra() == codigoCompra){
+            if(compra.getCodigoCompra().equals( codigoCompra)){
                 existe = true;
                 break;
             }

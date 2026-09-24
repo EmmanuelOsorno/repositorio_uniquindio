@@ -20,10 +20,12 @@ public class Compra {
 
 
     //constructor
-    public Compra(String codigoCompra, LocalDate fechaRealizacion, double valorTotal) {
+    public Compra(String codigoCompra, LocalDate fechaRealizacion, double valorTotal, MetodoPago metodoPago) {
         this.codigoCompra = codigoCompra;
         this.fechaRealizacion = fechaRealizacion;
         this.valorTotal = valorTotal;
+        this.metodoPago= metodoPago;
+
 
         //Iinicializar la lista
 
@@ -84,7 +86,6 @@ public class Compra {
     }
     //Método agregar detalleCompra
 
-
     public boolean agregarDetalleCompra(DetalleCompra detalle){
         boolean agregado = false;
 
@@ -94,7 +95,7 @@ public class Compra {
         return agregado;
     }
 
-    //Calcular valor total
+    //Calcular valor total de compra
 
     public double calcularValorTotal(List<Producto> listaProductos){
         double total = 0;
@@ -114,8 +115,5 @@ public class Compra {
 
         return total;
     }
-
-
-
 
 }

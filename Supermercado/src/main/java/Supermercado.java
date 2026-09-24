@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Supermercado {
 
-    //atributos
-    private String nombreomercial;
+    //Atributos
+    private String nombreComercial;
     private String direccion;
     private int telefono;
 
@@ -16,8 +16,8 @@ public class Supermercado {
 
 
     //constructor
-    public Supermercado(String nombreomercial, String direccion, int telefono) {
-        this.nombreomercial = nombreomercial;
+    public Supermercado(String nombreComercial, String direccion, int telefono) {
+        this.nombreComercial = nombreComercial;
         this.direccion = direccion;
         this.telefono = telefono;
 
@@ -79,12 +79,13 @@ public class Supermercado {
                 ", ListaCompras: " + ListaCompras;
     }
 
+    //===================Productos===================
 
-    //metdo para verificar productos
+    //Método para verificar productos
     public boolean verificarProducto(String codigoProducto){
         boolean existe=false;
         for(Producto producto:ListaProductos){
-            if(producto.getCodigoProducto()==codigoProducto){
+            if(producto.getCodigoProducto().equals(codigoProducto)){
                 existe=true;
                 break;
             }
@@ -103,11 +104,11 @@ public class Supermercado {
         return agregado;
     }
 
-    //metodo para actualizar productos
+    //Metodo para actualizar productos
     public boolean actualizarProducto(String codigoProducto, Producto informacionActualizada){
         boolean actualizado=false;
         for(Producto producto:ListaProductos){
-            if(producto.getCodigoProducto()==codigoProducto){
+            if(producto.getCodigoProducto().equals(codigoProducto)){
                 producto.setNombre(informacionActualizada.getNombre());
                 producto.setPrecioUnitario(informacionActualizada.getPrecioUnitario());
                 producto.setCantidadDisponible(informacionActualizada.getCantidadDisponible());
@@ -118,17 +119,22 @@ public class Supermercado {
         return actualizado;
     }
 
-    //metodo para eliminar prodcutos
-    public boolean eliminarProducto(String codigoProducto){
-        boolean eliminado=false;
-        for (Producto producto:ListaProductos){
-            ListaProductos.remove(producto);
-            eliminado=true;
-            break;
+    //Metodo para eliminar prodcutos
+    public boolean eliminarProducto(String codigoProducto) {
+        boolean eliminado = false;
+        for (Producto producto : ListaProductos) {
+            if (producto.getCodigoProducto().equals(codigoProducto)) {
+                ListaProductos.remove(producto);
+                eliminado = true;
+                break;
+            }
+
         }
         return eliminado;
     }
 
+
+    //================Clientes============
 
     //metodo para verificar clientes
     public boolean verificarClientes(int documentoIdentidad){
@@ -142,7 +148,7 @@ public class Supermercado {
         return existe;
     }
 
-    //metodo para agregar clientes
+    //Metodo para agregar clientes
     public boolean agregarClientes(Cliente cliente){
         boolean agregado=false;
         Boolean existe=verificarClientes(cliente.getDocumentoIdentidad());
@@ -153,7 +159,7 @@ public class Supermercado {
         return agregado;
     }
 
-    //metodo para actualizar clientes
+    //Metodo para actualizar clientes
     public boolean actualizarClientes(int documentoIdentidad, Cliente informacionActualizada){
         boolean actualizado=false;
         for(Cliente cliente:ListaClientes){
@@ -168,23 +174,26 @@ public class Supermercado {
         return actualizado;
     }
 
-    //metodo para eliminar clientes
-    public boolean eliminarClientes(int documentoIdentidad){
-        boolean eliminado=false;
-        for (Cliente cliente:ListaClientes){
-            ListaClientes.remove(cliente);
-            eliminado=true;
-            break;
+    //Metodo para eliminar clientes
+    public boolean eliminarClientes(int documentoIdentidad) {
+        boolean eliminado = false;
+        for (Cliente cliente : ListaClientes) {
+            if (cliente.getDocumentoIdentidad() == documentoIdentidad) {
+                ListaClientes.remove(cliente);
+                eliminado = true;
+                break;
+            }
         }
+
         return eliminado;
     }
 
-
-    //metodo para verificar compras
+    //===============Compras==================
+    //Metodo para verificar compras
     public boolean verificarCompra(String codigoCompra){
         boolean existe=false;
         for(Compra compra:ListaCompras){
-            if(compra.getCodigoCompra()==codigoCompra){
+            if(compra.getCodigoCompra().equals(codigoCompra)){
                 existe=true;
                 break;
             }
@@ -192,7 +201,7 @@ public class Supermercado {
         return existe;
     }
 
-    //metodo para agregar compras
+    //Metodo para agregar compras
     public boolean agregarCompra(Compra compra){
         boolean agregado=false;
         Boolean existe=verificarCompra(compra.getCodigoCompra());
@@ -203,11 +212,11 @@ public class Supermercado {
         return agregado;
     }
 
-    //metodo para actualizar compras
+    //Metodo para actualizar compras
     public boolean actualizarCompras(String codigoCompra, Compra informacionActualizada){
         boolean actualizado=false;
         for(Compra compra:ListaCompras){
-            if(compra.getCodigoCompra()==codigoCompra){
+            if(compra.getCodigoCompra().equals(codigoCompra)){
                 compra.setFechaRealizacion(informacionActualizada.getFechaRealizacion());
                 compra.setValorTotal(informacionActualizada.getValorTotal());
                 actualizado=true;
@@ -217,7 +226,7 @@ public class Supermercado {
         return actualizado;
     }
 
-    //metodo para eliminar compras
+    //Metodo para eliminar compras
     public boolean eliminarCompras(String codigoCompra){
         boolean eliminado=false;
         for (Compra compra:ListaCompras){
@@ -227,4 +236,47 @@ public class Supermercado {
         }
         return eliminado;
     }
+
+
+    //Asociar compra al cliente
+
+    public boolean asociarCompraCliente(int documentoIdentidad, String codigoCompra) {
+        boolean asociado = false;
+
+        Cliente clienteEncontrado = null;
+        Compra compraEncontrada = null;
+
+
+       //Buscar cliente
+        for (Cliente cliente : ListaClientes) {
+            if (cliente.getDocumentoIdentidad() == documentoIdentidad) {
+                clienteEncontrado = cliente;
+                break;
+            }
+
+        }
+
+        //Buscar compra
+
+        for(Compra compra: listaCompra){
+            if(compra.getCodigoCompra().equals(codigoCompra)){
+
+                compraEncontrada = compra;
+                break;
+            }
+        }
+
+        //Asociación
+
+
+
+
+       //Agregar un producto a una compra
+       //buscar producto
+            //verificar que existe
+        //calcular total de compra
+          //Actualizar inventario
+            //Consultar compras del cliente
+            //total de ventas por fecha
+
 }

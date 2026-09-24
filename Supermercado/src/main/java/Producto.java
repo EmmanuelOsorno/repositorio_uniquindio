@@ -11,8 +11,6 @@ public class Producto {
     private Categoria categoria;
 
 
-
-
     //constructor
     public Producto(String codigoProducto, String nombre, double precioUnitario, int cantidadDisponible) {
         this.codigoProducto = codigoProducto;
@@ -48,16 +46,25 @@ public class Producto {
         this.cantidadDisponible = cantidadDisponible;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
 
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
     //toString
 
 
-    @Override
-    public String toString() {
-        return "Producto " + nombre +
-                "= codigoProducto: " + codigoProducto +
-                ", precioUnitario: " + precioUnitario +
-                ", cantidadDisponible: " + cantidadDisponible;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "Producto{" +
+                "codigoProducto='" + codigoProducto + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", precioUnitario=" + precioUnitario +
+                ", cantidadDisponible=" + cantidadDisponible +
+                ", categoria=" + categoria +
+                '}';
     }
 
     //Método  para verificar disponible
